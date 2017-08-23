@@ -121,6 +121,7 @@ function updateBalls(){
         }
     }
 
+    //统计当前视线中小球数量，将超出浏览器视线的小球删除
     var cnt = 0;
     for(var i=0;i<balls.length;i++)
     {
@@ -151,7 +152,7 @@ function updateStars(){
 
 function addBalls( x , y , num ){
     var ballsgrandom = Math.random();
-    var ballsvxrandom = Math.pow( -1 , Math.ceil( Math.random()*1000 ) );
+    var ballsvxrandom = Math.pow( -1 , Math.ceil( Math.random()*10 ) );
     var ballscolorrandom = Math.floor( Math.random()*colors.length )
 
     for( var i = 0  ; i < digit[num].length ; i ++ )

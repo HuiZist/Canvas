@@ -7,8 +7,8 @@ var stars=[];
 var pic = new Image();
 pic.src = "pri_images/star.png";
 
-var circleStarsmax = 30;
-var trigonStarsmax = 30;
+var circleStarsmax = 30;	//外圆头部最大星星数
+var trigonStarsmax = 30;	//一条三角线头部最大星星数
 
 var centerx=WINDOW_WIDTH/2;
 var centery=WINDOW_HEIGHT/2-80;
@@ -19,9 +19,9 @@ var starstep=Math.sqrt(3)*circleR/(trigonStarsmax*(2));
 
 var starstricop=[];
 var trinum=4;
-var digitleft=WINDOW_WIDTH/6;
-var digittop=centery+circleR+50;
-var digitnum=[1,4,3,0];
+var digitleft=WINDOW_WIDTH/6;	//底部数字间距
+var digittop=centery+circleR+50;	//底部数字距浏览器内容顶部距离
+var digitnum=[1,4,3,0];	//底部数字
 var timecur = 0;
 var lightupdate=0;
 var flgnum=0;
@@ -57,14 +57,14 @@ function createcircleStars(){
 	{
 		for(var j=0;j<i;j++)
 		{
-			var starradin = (Math.random()*2/(circleStarsmax+1)+(circleStarsmax-i)*2/circleStarsmax)*Math.PI;
-			var stard = (19/20+Math.random()*1/10)*circleR;
+			var starradin = (Math.random()*2/(circleStarsmax+1)+(circleStarsmax-i)*2/circleStarsmax)*Math.PI;	//将圆分为starmax份，star在所属圆弧中随机取值
+			var stard = (19/20+Math.random()*1/10)*circleR;		//star与圆心距离
 			var astar={
-				radin:starradin,
-				d:stard,
-				x:stard*Math.cos(starradin)+centerx,
-				y:centery-stard*Math.sin(starradin),
-				sx:Math.floor(Math.random()*7)
+				radin:starradin,	//star相对于过圆心垂直线的角度
+				d:stard,	//star与圆心距离
+				x:stard*Math.cos(starradin)+centerx,	//star坐标x
+				y:centery-stard*Math.sin(starradin),	//star坐标y
+				sx:Math.floor(Math.random()*7)	//star在图片中的位置，即亮度
 
 			}
 			stars.push(astar);
@@ -115,7 +115,7 @@ function createtrigonStarscop(){
 
 
 function update(){
-	updatecircle();
+	updatecircle();	//更新圆弧star坐标和亮度
 	updatetrigon();
 	updatetrigoncop();
 }
@@ -128,10 +128,10 @@ function updatecircle(){
 		{
 			stars[i].sx=0;
 		}
-		stars[i].radin-=2*Math.PI/(circleStarsmax+1);
-		if(stars[i].radin>=2*Math.PI)
+		stars[i].radin-=2*Math.PI/(circleStarsmax+1);	//圆弧旋转速度
+		if(Math.abs(stars[i].radin)>=2*Math.PI)
 		{
-			stars[i].radin-=2*Math.PI;
+			stars[i].radin+=2*Math.PI;
 		}
 		stars[i].x=stars[i].d*Math.cos(stars[i].radin)+centerx;
 		stars[i].y=centery-stars[i].d*Math.sin(stars[i].radin);
@@ -148,6 +148,7 @@ function updatetrigon(){
 		}
 		starstri[i].x+=starstri[i].stepx;
 		starstri[i].y+=starstri[i].stepy;
+		//直线折射
 		if((starstri[i].x>=centerx)&&(starstri[i].y<=centery-circleR))
 		{
 			starstri[i].stepy=starstep*Math.sqrt(3)/2;
@@ -194,10 +195,11 @@ function updatetrigoncop(){
 
 function render(){
 	cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
-	fillCanvas();
-	drawStars();
-	flgnum++;
+	fillCanvas();	//刷新画布背景
+	drawStars();	//绘制stars
+	flgnum++;	//底部数字star亮度更新
 	//var timenow = getCurrentShowTimeSeconds();
+	//亮度更新频率
 	if(flgnum==2){
 		lightupdate++;
 		flgnum=0;
@@ -252,7 +254,7 @@ function drawdigit(x,y,num){
 		{
 			if(digit[num][i][j]==1)
 			{
-				var picno = (lightupdate+j)%7;
+				var picno = (lightupdate+j)%7;	/底部数字star亮度随数组列循环递增
 				cxt.drawImage(pic,picno*7,0,7,7,x+j*13+3,y+i*13+3,7,7);
 			}
 		}
