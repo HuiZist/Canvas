@@ -1,0 +1,15 @@
+<?php
+
+?>
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Clock Play</title>
+</head>
+<body style="height:100%">
+	<canvas id="canvas" style="height:100%">当前浏览器不支持Canvas，请更换浏览器后尝试！</canvas>
+	<script src="js/mydigit2.js"></script>
+	<script src="js/mycount2.js"></script>
+</body>
+</html>
