@@ -18,10 +18,10 @@ var starstri=[];
 var starstep=Math.sqrt(3)*circleR/(trigonStarsmax*(2));
 
 var starstricop=[];
-var trinum=4;
-var digitleft=WINDOW_WIDTH/6;	//底部数字间距
+var trinum=5;
+var digitleft=WINDOW_WIDTH/5;	//底部数字间距
 var digittop=centery+circleR+50;	//底部数字距浏览器内容顶部距离
-var digitnum=[1,4,3,0];	//底部数字
+var digitnum=[0,1,2,3,4];	//底部数字
 var timecur = 0;
 var lightupdate=0;
 var flgnum=0;
@@ -212,10 +212,11 @@ function render(){
 	
 
 	//var picno = Math.floor(Math.random()*7);
-	drawdigit(digitleft+digitleft/4,digittop,digitnum[0]);
-	drawdigit(digitleft*2+digitleft/4,digittop,digitnum[1]);
-	drawdigit(digitleft*3+digitleft/4,digittop,digitnum[2]);
-	drawdigit(digitleft*4+digitleft/4,digittop,digitnum[3]);
+	drawdigit(digitleft/2+digitleft/4,digittop,digitnum[0]);
+	drawdigit(digitleft*1.5+digitleft/4,digittop,digitnum[1]);
+	drawdigit(digitleft*2+digitleft/4,digittop,digitnum[2]);
+	drawdigit(digitleft*3+digitleft/4,digittop,digitnum[3]);
+	drawdigit(digitleft*3.5+digitleft/4,digittop,digitnum[4]);
 
 	/*cxt.font = 'bold 144px consolas';
     cxt.textAlign = '#fff';
