@@ -254,7 +254,7 @@ function drawdigit(x,y,num){
 		{
 			if(digit[num][i][j]==1)
 			{
-				var picno = (lightupdate+j)%7;	/底部数字star亮度随数组列循环递增
+				var picno = (lightupdate+j)%7;	//底部数字star亮度随数组列循环递增
 				cxt.drawImage(pic,picno*7,0,7,7,x+j*13+3,y+i*13+3,7,7);
 			}
 		}
